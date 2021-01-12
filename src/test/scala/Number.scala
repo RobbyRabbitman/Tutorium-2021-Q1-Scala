@@ -23,6 +23,26 @@ class SquareTest extends FunSuite {
   )
 }
 
+class MaxTest extends FunSuite {
+  test("Expect max of 1 and 2 to be 2")(assert(max(1, 2) === 2))
+  test("Expect max of 2 and 1 to be 2")(assert(max(2, 1) === 2))
+  test("Expect max of 0 and 0 to be 0")(assert(max(0, 0) === 0))
+  test("Expect max of 1 and 1 to be 1")(assert(max(1, 1) === 1))
+  test("Expect max of -1 and 0 to be 0")(assert(max(-1, 0) === 0))
+
+  test("demo 1 showing the limits of scala (overflow). " +
+    "Except max(Int.MaxValue + 1,Int.MaxValue) to be Int.MaxValue + 1, " +
+    "but Int.MaxValue > Int.MaxValue + 1 (Int.MaxValue + 1 === Int.MinValue)")(
+    assert(max(Int.MaxValue + 1, Int.MaxValue) === Int.MaxValue + 1))
+  test("some magic aka overflow 1")(assert(Int.MaxValue + 1 === Int.MinValue))
+  test("some magic aka overflow 2")(assert(Int.MinValue - 1 === Int.MaxValue))
+  test("demo 2 showing the limits of scala (overflow)")(
+    assert(max(Int.MinValue - 1, Int.MaxValue - 1) === Int.MaxValue - 1))
+  test("demo 3 showing the limits of scala (overflow). " +
+    "Except max(Int.MaxValue + 1,Int.MaxValue) to be Int.MaxValue + 1")(
+    assert(max(Int.MaxValue + 1, Int.MinValue + 1) === Int.MaxValue + 1))
+}
+
 
 
 
