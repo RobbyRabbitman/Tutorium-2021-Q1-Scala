@@ -43,6 +43,16 @@ class MaxTest extends FunSuite {
     assert(max(Int.MaxValue + 1, Int.MinValue + 1) === Int.MaxValue + 1))
 }
 
+class AbsTest extends FunSuite {
+  test("Expect |0| to be 0")(assert(abs(0) === 0))
+  test("Expect |-0| to be 0")(assert(abs(-0) === 0))
+  test("Expect |1| to be 1")(assert(abs(1) === 1))
+  test("Expect |-1| to be 1")(assert(abs(-1) === 1))
+  test("Expect |-123456789| to be 123456789")(assert(abs(-123456789) === 123456789))
+  test("demo showing some overflow. Int range: -2147483648 to 2147483647")(assert(abs(Int.MinValue) > 0))
+
+}
+
 
 
 
