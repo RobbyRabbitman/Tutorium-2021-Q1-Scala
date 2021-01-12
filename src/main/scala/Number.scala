@@ -28,4 +28,11 @@ package object Number {
    * @return y if x < y, else x
    */
   def max(x:Int,y:Int):Int = if(x < y) y else x
+
+  /**
+   *
+   * @param x [[Int]]
+   * @return |x|
+   */
+  def abs(x:Int):Int = if(x < 0) -x else x // math.abs(x)
 }
