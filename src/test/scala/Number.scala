@@ -50,7 +50,14 @@ class AbsTest extends FunSuite {
   test("Expect |-1| to be 1")(assert(abs(-1) === 1))
   test("Expect |-123456789| to be 123456789")(assert(abs(-123456789) === 123456789))
   test("demo showing some overflow. Int range: -2147483648 to 2147483647")(assert(abs(Int.MinValue) > 0))
+}
 
+class ModuloTest extends FunSuite {
+  test("Expect 46%2 to be 0")(assert(%(46, 2) === 0))
+  test("Expect 13%3 to be 1")(assert(%(13,3) === 1))
+  test("Expect 0%1 to be 0")(assert(%(0,1) === 0))
+  test("Expect 46%100 to be 46")(assert(%(46, 100) === 46))
+  test("Expect 46%0 to throw an exception")(assertThrows[IllegalArgumentException](%(46, 0)))
 }
 
 
