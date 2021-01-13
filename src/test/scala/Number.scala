@@ -58,6 +58,12 @@ class ModuloTest extends FunSuite {
   test("Expect 0%1 to be 0")(assert(%(0,1) === 0))
   test("Expect 46%100 to be 46")(assert(%(46, 100) === 46))
   test("Expect 46%0 to throw an exception")(assertThrows[IllegalArgumentException](%(46, 0)))
+  test("Expect -46%-2 to be 0")(assert(%(-46, -2) === 0))
+  test("Expect -13%3 to be 1")(assert(%(-13,3) === -1))
+  test("Expect -13%-3 to be 1")(assert(%(-13,-3) === -1))
+  test("Expect 0%-1 to be 0")(assert(%(0,-1) === 0))
+  test("Expect -46%100 to be 46")(assert(%(-46, 100) === -46))
+  test("Expect -46%0 to throw an exception")(assertThrows[IllegalArgumentException](%(-46, 0)))
 }
 
 
