@@ -2,14 +2,14 @@ package object Number {
   /**
    * Answer to everything
    */
-  val ANSWER_TO_EVERYTHING:Int = 42
+  val ANSWER_TO_EVERYTHING: Int = 42
 
   /**
    *
    * @param x any [[Int]]
    * @return true, if x > [[Number.ANSWER_TO_EVERYTHING]], else false
    */
-  def isGreaterThanAnswerToEverything(x:Int): Boolean = x > ANSWER_TO_EVERYTHING
+  def isGreaterThanAnswerToEverything(x: Int): Boolean = x > ANSWER_TO_EVERYTHING
 
   /** Fragen:
    * Vorteil Double gegenüber Int? Dezimalzahlen möglich.
@@ -18,7 +18,7 @@ package object Number {
    * @param x any [[Double]]
    * @return square of x
    */
-  def square(x:Double):Double = x * x;
+  def square(x: Double): Double = x * x;
 
   /** Fragen:
    * Was passiert bei max(Int.MaxValue + 1, Int.MaxValue)? Bei Int gibt es einen overflow.
@@ -27,12 +27,25 @@ package object Number {
    * @param y [[Int]]
    * @return y if x < y, else x
    */
-  def max(x:Int,y:Int):Int = if(x < y) y else x
+  def max(x: Int, y: Int): Int = if (x < y) y else x
 
   /**
    *
    * @param x [[Int]]
    * @return |x|
    */
-  def abs(x:Int):Int = if(x < 0) -x else x // math.abs(x)
+  def abs(x: Int): Int = if (x < 0) -x else x // math.abs(x)
+
+  /**
+   *
+   * @param n [[Int]]
+   * @param m [[Int]]
+   * @return n%m
+   */
+  def %(n: Int, m: Int): Int = {
+    var r: Int = n
+    if (m == 0) throw new IllegalArgumentException("The divider in modulo must not be 0")
+    while (r >= m) r -= m
+    r
+  }
 }
