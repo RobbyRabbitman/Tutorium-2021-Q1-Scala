@@ -43,9 +43,11 @@ package object Number {
    * @return n%m
    */
   def %(n: Int, m: Int): Int = {
-    var r: Int = n
-    if (m == 0) throw new IllegalArgumentException("The divider in modulo must not be 0")
-    while (r >= m) r -= m
-    r
+    val abs_n: Int = abs(n)
+    val abs_m: Int = abs(m)
+    var r: Int = abs_n
+    if (abs_m == 0) throw new IllegalArgumentException("The divider in modulo must not be 0")
+    while (r >= abs_m) r -= abs_m
+    if (n < 0) -r else r
   }
 }
