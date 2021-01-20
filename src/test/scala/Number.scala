@@ -104,4 +104,16 @@ class SumOfDigitsOfSquaresTest extends FunSuite {
   test("Expect sumOfSquaresOfDigits(-11) to throw an exception")(assertThrows[IllegalArgumentException](sumOfSquaresOfDigits(-11)))
 }
 
+class InverseModule extends FunSuite {
+  test("Expect inverseModule(3, 26) to be 9")(assert(inverseModule(3, 26) === Some(9)))
+  test("Expect inverseModule(3, 27) to not exist")(assert(inverseModule(3, 27) === None))
+  test("Expect inverseModule(42, 2017) to be 1969")(assert(inverseModule(42, 2017) === Some(1969)))
+}
+
+class ExtendedEuclidAlgorithmTest extends FunSuite {
+  test("Expect extendedEuclidAlgorithm(120, 23) to be (1,-9,47)")(assert(extendedEuclidAlgorithm(120, 23) === (1, -9, 47)))
+  test("Expect extendedEuclidAlgorithm(122, 22) to be (2,2,-11)")(assert(extendedEuclidAlgorithm(122, 22) === (2, 2, -11)))
+  test("Expect extendedEuclidAlgorithm(99, 78) to be (3,-11,14)")(assert(extendedEuclidAlgorithm(99, 78) === (3, -11, 14)))
+}
+
 
