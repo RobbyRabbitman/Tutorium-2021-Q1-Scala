@@ -94,4 +94,14 @@ class PowerTest extends FunSuite {
   test("Expect 4^-1 to throw an exception")(assertThrows[IllegalArgumentException](power(4, -1)))
 }
 
+class SumOfDigitsOfSquaresTest extends FunSuite {
+  test("Expect sumOfSquaresOfDigits(139) to be 91")(assert(sumOfSquaresOfDigits(139) === 91))
+  test("Expect sumOfSquaresOfDigits(1111) to be 4")(assert(sumOfSquaresOfDigits(1111) === 4))
+  test("Expect sumOfSquaresOfDigits(2222) to be 16")(assert(sumOfSquaresOfDigits(2222) === 16))
+  test("Expect sumOfSquaresOfDigits(1000001) to be 2")(assert(sumOfSquaresOfDigits(1000001) === 2))
+  test("Expect sumOfSquaresOfDigits(0) to be 0")(assert(sumOfSquaresOfDigits(0) === 0))
+  test("Expect sumOfSquaresOfDigits(999999999) to be 819")(assert(sumOfSquaresOfDigits(999999999) === 729))
+  test("Expect sumOfSquaresOfDigits(-11) to throw an exception")(assertThrows[IllegalArgumentException](sumOfSquaresOfDigits(-11)))
+}
+
 
