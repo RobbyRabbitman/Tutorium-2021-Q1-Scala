@@ -62,4 +62,15 @@ package object Number {
     if (n < 0) throw new ArithmeticException("The input value must not be negativ! Provided " + n)
     if (n == 0) 1 else factorial(n - 1) * n
   }
+
+  /**
+   *
+   * @param x [[Int]]
+   * @param y [[Int]] >= 0
+   * @return x^y
+   */
+  def power(x: Int, y: Int): Int = {
+    if (y < 0) throw new IllegalArgumentException("Exponent must not be negative! Provided " + y)
+    if (y == 0) 1 else power(x, y - 1) * x
+  }
 }
