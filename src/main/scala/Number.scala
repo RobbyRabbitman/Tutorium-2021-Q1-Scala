@@ -65,6 +65,22 @@ package object Number {
 
   /**
    *
+   * @param n [[BigInt]] >= 0
+   * @return !n
+   */
+  def _factorial(n: BigInt): BigInt = {
+    if (n < 0) throw new ArithmeticException("The input value must not be negativ! Provided " + n)
+    var result: BigInt = 1;
+    var current: BigInt = n;
+    while (current > 1) {
+      result *= current
+      current -= 1
+    }
+    result
+  }
+
+  /**
+   *
    * @param x [[Int]]
    * @param y [[Int]] >= 0
    * @return x^y
@@ -104,7 +120,7 @@ package object Number {
    * @return x such as x is the smallest positive number so that: ax % m = 1 or None if it doesn't exists
    */
   def inverseModule(x: Int, m: Int): Option[Int] = {
-    if(m < 1) throw new ArithmeticException("Module must be positive!")
+    if (m < 1) throw new ArithmeticException("Module must be positive!")
     val (d, s, _) = extendedEuclidAlgorithm(x, m)
     if (d == 1) Option(if (s < 0) s + m else s) else Option.empty
   }

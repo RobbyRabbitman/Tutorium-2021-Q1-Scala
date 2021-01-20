@@ -82,6 +82,15 @@ class FactorialTest extends FunSuite {
   test("Expect 20! to be 2432902008176640000")(assert(factorial(20L) === 2432902008176640000L))
 }
 
+class _FactorialTest extends FunSuite {
+  test("Expect 0! to be 1")(assert(_factorial(0) === 1))
+  test("Expect -1! to throw an Exception")(assertThrows[ArithmeticException](_factorial(-1)))
+  test("Expect 1! to be 1")(assert(_factorial(1) === 1))
+  test("Expect 2! to be 2")(assert(_factorial(2) === 2))
+  test("Expect 5! to be 120")(assert(_factorial(5) === 120))
+  test("Expect 20! to be 2432902008176640000")(assert(_factorial(20L) === 2432902008176640000L))
+}
+
 class PowerTest extends FunSuite {
   test("Expect 0^0 to be 1")(assert(power(0, 0) === 1))
   test("Expect 0^20 to be 0")(assert(power(0, 20) === 0))
