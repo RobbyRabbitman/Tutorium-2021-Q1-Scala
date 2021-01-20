@@ -92,6 +92,23 @@ package object Number {
 
   /**
    *
+   * @param x [[Int]]
+   * @param y [[Int]] >= 0
+   * @return x^y
+   */
+  def _power(x: Int, y: Int): Int = {
+    if (y < 0) throw new IllegalArgumentException("Exponent must not be negative! Provided " + y)
+    var result: Int = 1;
+    var counter: Int = y;
+    while (counter > 0) {
+      result *= x
+      counter -= 1
+    }
+    result
+  }
+
+  /**
+   *
    * @param n [[Int]] >= 0
    * @return the sum of the squares of the digits of n
    */

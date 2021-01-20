@@ -103,6 +103,18 @@ class PowerTest extends FunSuite {
   test("Expect 4^-1 to throw an exception")(assertThrows[IllegalArgumentException](power(4, -1)))
 }
 
+class _PowerTest extends FunSuite {
+  test("Expect 0^0 to be 1")(assert(_power(0, 0) === 1))
+  test("Expect 0^20 to be 0")(assert(_power(0, 20) === 0))
+  test("Expect 1^0 to be 1")(assert(_power(1, 0) === 1))
+  test("Expect 1^1 to be 1")(assert(_power(1, 1) === 1))
+  test("Expect 1^10 to be 1")(assert(_power(1, 10) === 1))
+  test("Expect 10^0 to be 1")(assert(_power(10, 0) === 1))
+  test("Expect 10^4 to be 10000")(assert(_power(10, 4) === 10000))
+  test("Expect 2^10 to be 1024")(assert(_power(2, 10) === 1024))
+  test("Expect 4^-1 to throw an exception")(assertThrows[IllegalArgumentException](_power(4, -1)))
+}
+
 class SumOfDigitsOfSquaresTest extends FunSuite {
   test("Expect sumOfSquaresOfDigits(139) to be 91")(assert(sumOfSquaresOfDigits(139) === 91))
   test("Expect sumOfSquaresOfDigits(1111) to be 4")(assert(sumOfSquaresOfDigits(1111) === 4))
