@@ -83,4 +83,29 @@ package object Number {
     if (n < 0) throw new IllegalArgumentException("Exponent must be a natural number! Provided " + n)
     if (n < 10) power(n, 2) else sumOfSquaresOfDigits(n / 10) + power(n % 10, 2)
   }
+
+  /**
+   *
+   * @param a
+   * @param b
+   * @return (d,s,t) such as gcd(a,b) = d = s * a + t * b
+   */
+  def extendedEuclidAlgorithm(a: Int, b: Int): (Int, Int, Int) = {
+    // https://de.wikipedia.org/wiki/Erweiterter_euklidischer_Algorithmus#Rekursive_Variante_2
+    if (b == 0) return (a, 1, 0)
+    val (d, s, t) = extendedEuclidAlgorithm(b, a % b)
+    (d, t, s - (a / b) * t)
+  }
+
+  /**
+   *
+   * @param x [[Int]]
+   * @param m [[Int]] >= 0
+   * @return x such as x is the smallest positive number so that: ax % m = 1 or None if it doesn't exists
+   */
+  def inverseModule(x: Int, m: Int): Option[Int] = {
+    if(m < 1) throw new ArithmeticException("Module must be positive!")
+    val (d, s, _) = extendedEuclidAlgorithm(x, m)
+    if (d == 1) Option(if (s < 0) s + m else s) else Option.empty
+  }
 }
