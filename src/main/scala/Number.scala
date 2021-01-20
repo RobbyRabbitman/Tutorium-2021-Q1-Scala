@@ -73,4 +73,14 @@ package object Number {
     if (y < 0) throw new IllegalArgumentException("Exponent must not be negative! Provided " + y)
     if (y == 0) 1 else power(x, y - 1) * x
   }
+
+  /**
+   *
+   * @param n [[Int]] >= 0
+   * @return the sum of the squares of the digits of n
+   */
+  def sumOfSquaresOfDigits(n: Int): Int = {
+    if (n < 0) throw new IllegalArgumentException("Exponent must be a natural number! Provided " + n)
+    if (n < 10) power(n, 2) else sumOfSquaresOfDigits(n / 10) + power(n % 10, 2)
+  }
 }
