@@ -52,4 +52,14 @@ package object Number {
     while (r >= abs_m) r -= abs_m
     if (n < 0) -r else r
   }
+
+  /**
+   *
+   * @param n [[BigInt]] >= 0
+   * @return !n
+   */
+  def factorial(n: BigInt): BigInt = {
+    if (n < 0) throw new ArithmeticException("The input value must not be negativ! Provided " + n)
+    if (n == 0) 1 else factorial(n - 1) * n
+  }
 }
