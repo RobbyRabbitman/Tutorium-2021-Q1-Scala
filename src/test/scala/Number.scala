@@ -54,23 +54,32 @@ class AbsTest extends FunSuite {
 
 class ModuloTest extends FunSuite {
   test("Expect 46%2 to be 0")(assert(%(46, 2) === 0))
-  test("Expect 13%3 to be 1")(assert(%(13,3) === 1))
-  test("Expect 0%1 to be 0")(assert(%(0,1) === 0))
+  test("Expect 13%3 to be 1")(assert(%(13, 3) === 1))
+  test("Expect 0%1 to be 0")(assert(%(0, 1) === 0))
   test("Expect 46%100 to be 46")(assert(%(46, 100) === 46))
   test("Expect 46%0 to throw an exception")(assertThrows[ArithmeticException](%(46, 0)))
   test("Expect -46%-2 to be 0")(assert(%(-46, -2) === 0))
-  test("Expect -13%3 to be 1")(assert(%(-13,3) === -1))
-  test("Expect -13%-3 to be 1")(assert(%(-13,-3) === -1))
-  test("Expect 0%-1 to be 0")(assert(%(0,-1) === 0))
+  test("Expect -13%3 to be 1")(assert(%(-13, 3) === -1))
+  test("Expect -13%-3 to be 1")(assert(%(-13, -3) === -1))
+  test("Expect 0%-1 to be 0")(assert(%(0, -1) === 0))
   test("Expect -46%100 to be 46")(assert(%(-46, 100) === -46))
   test("Expect -46%0 to throw an exception")(assertThrows[ArithmeticException](%(-46, 0)))
   // compare custom modulo with scala's modulo
   test("compare custom modulo -46%-2")(assert(%(-46, -2) === -46 % -2))
-  test("compare custom modulo -13%3")(assert(%(-13,3) === -13 % 3))
-  test("compare custom modulo -13%-3")(assert(%(-13,-3) === -13 % -3))
-  test("compare custom modulo 0%-1")(assert(%(0,-1) === 0 % -1))
+  test("compare custom modulo -13%3")(assert(%(-13, 3) === -13 % 3))
+  test("compare custom modulo -13%-3")(assert(%(-13, -3) === -13 % -3))
+  test("compare custom modulo 0%-1")(assert(%(0, -1) === 0 % -1))
   test("compare custom modulo -46%100")(assert(%(-46, 100) === -46 % 100))
   test("compare custom modulo -46%0")(assertThrows[ArithmeticException](-46 % 0))
+}
+
+class FactorialTest extends FunSuite {
+  test("Expect 0! to be 1")(assert(factorial(0) === 1))
+  test("Expect -1! to throw an Exception")(assertThrows[ArithmeticException](factorial(-1)))
+  test("Expect 1! to be 1")(assert(factorial(1) === 1))
+  test("Expect 2! to be 2")(assert(factorial(2) === 2))
+  test("Expect 5! to be 120")(assert(factorial(5) === 120))
+  test("Expect 20! to be 2432902008176640000")(assert(factorial(20L) === 2432902008176640000L))
 }
 
 
