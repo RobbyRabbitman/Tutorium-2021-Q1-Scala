@@ -138,13 +138,13 @@ class ExtendedEuclidAlgorithmTest extends FunSuite {
 }
 
 class FibTest extends FunSuite {
-  test("Expect fib(0) to be 0")(assert(fib(0)===0))
-  test("Expect fib(1) to be 1")(assert(fib(1)===1))
-  test("Expect fib(2) to be 1")(assert(fib(2)===1))
-  test("Expect fib(3) to be 2")(assert(fib(3)===2))
-  test("Expect fib(4) to be 3")(assert(fib(4)===3))
-  test("Expect fib(5) to be 5")(assert(fib(5)===5))
-  test("Expect fib(6) to be 8")(assert(fib(6)===8))
+  test("Expect fib(0) to be 0")(assert(fib(0) === 0))
+  test("Expect fib(1) to be 1")(assert(fib(1) === 1))
+  test("Expect fib(2) to be 1")(assert(fib(2) === 1))
+  test("Expect fib(3) to be 2")(assert(fib(3) === 2))
+  test("Expect fib(4) to be 3")(assert(fib(4) === 3))
+  test("Expect fib(5) to be 5")(assert(fib(5) === 5))
+  test("Expect fib(6) to be 8")(assert(fib(6) === 8))
   test("Expect fib(-1) to be throw an Exception")(assertThrows[IllegalArgumentException](fib(-1)))
 }
 
@@ -158,6 +158,28 @@ class IsPrimeTest extends FunSuite {
   test("Expect 33 to not be a prime number")(assert(!isPrime(33)))
   test("Expect 41 to be a prime number")(assert(isPrime(41)))
   test("Expect 1 to throw an Exception")(assertThrows[IllegalArgumentException](isPrime(1)))
+}
+
+class GcdTest extends FunSuite {
+  test("Expect gcd(3,9) to be 3")(assert(gcd(3, 9) === 3))
+  test("Expect gcd(-3,9) to be 3")(assert(gcd(-3, 9) === 3))
+  test("Expect gcd(3,-9) to be 3")(assert(gcd(3, -9) === 3))
+  test("Expect gcd(-3,-9) to be 3")(assert(gcd(-3, -9) === 3))
+  test("Expect gcd(20,50) to be 3")(assert(gcd(20, 50) === 10))
+  test("Expect gcd(0,0) to be 0")(assert(gcd(0, 0) === 0))
+  test("Expect gcd(0,1000) to be 1000")(assert(gcd(0, 1000) === 1000))
+  test("Expect gcd(10,1000) to be gcd(1000,10) ")(assert(gcd(10, 1000) === gcd(1000, 10)))
+}
+
+class LcmTest extends FunSuite {
+  test("Expect lcm(3,9) to be 9")(assert(lcm(3, 9) === 9))
+  test("Expect lcm(-3,9) to be 9")(assert(lcm(-3, 9) === 9))
+  test("Expect lcm(3,-9) to be 9")(assert(lcm(3, -9) === 9))
+  test("Expect lcm(-3,-9) to be 9")(assert(lcm(-3, -9) === 9))
+  test("Expect lcm(20,50) to be 3")(assert(lcm(20, 50) === 100))
+  test("Expect lcm(0,0) to be 0")(assert(lcm(0, 0) === 0))
+  test("Expect lcm(0,1000) to be 1000")(assert(lcm(0, 1000) === 0))
+  test("Expect lcm(10,1000) to be lcm(1000,10) ")(assert(lcm(10, 1000) === lcm(1000, 10)))
 }
 
 

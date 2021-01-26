@@ -148,9 +148,9 @@ package object Number {
    * @param n n >= 0
    * @return f(n)=f(n-1)+f(n-2), f(0)=0, f(1)=1
    */
-  def fib(n:Int):Int = {
-    if(n < 0) throw new IllegalArgumentException("n must not be negative!")
-    else if(n == 0 || n == 1) n else fib(n-1) + fib(n-2)
+  def fib(n: Int): Int = {
+    if (n < 0) throw new IllegalArgumentException("n must not be negative!")
+    else if (n == 0 || n == 1) n else fib(n - 1) + fib(n - 2)
   }
 
   /**
@@ -158,16 +158,34 @@ package object Number {
    * @param n n >= 2
    * @return true if n is a prime number, else false
    */
-  def isPrime(n:Int):Boolean={
-    if(n < 2) throw new IllegalArgumentException("n must be >= 2!")
-    if(n == 2 || n == 3) return true
-    if(n % 2 == 0) return false
+  def isPrime(n: Int): Boolean = {
+    if (n < 2) throw new IllegalArgumentException("n must be >= 2!")
+    if (n == 2 || n == 3) return true
+    if (n % 2 == 0) return false
     var current = 3;
-    while(current < n){
-      if(n % current == 0) return false
-      current +=2
+    while (current < n) {
+      if (n % current == 0) return false
+      current += 2
     }
     true
   }
+
+  /**
+   *
+   * @param a
+   * @param b
+   * @return greatest common divider
+   */
+  def gcd(a: Int, b: Int): Int = {
+    if (b == 0) abs(a) else gcd(b, a % b)
+  }
+
+  /**
+   *
+   * @param a
+   * @param b
+   * @return least common multiple using |a| and |b|
+   */
+  def lcm(a: Int, b: Int): Int = if (a == 0 && b == 0) 0 else (abs(a) / gcd(a, b)) * abs(b)
 
 }
