@@ -188,4 +188,24 @@ package object Number {
    */
   def lcm(a: Int, b: Int): Int = if (a == 0 && b == 0) 0 else (abs(a) / gcd(a, b)) * abs(b)
 
+  /**
+   *
+   * @param n >= 0
+   * @return n' with mirrored digits, leading zeros are removed
+   */
+  def mirror(n: Int): Int =
+    if (n < 0) throw new IllegalArgumentException("n must be a natural number!")
+    else mirrorHelper(n, 0)
+
+  private def mirrorHelper(in: Int, out: Int): Int = if (in == 0) out else mirrorHelper(in / 10, out * 10 + in % 10)
+
+  /**
+   *
+   * @param n >= 0
+   * @return n' with mirrored digits, leading zeros are removed
+   */
+  def _mirror(n: Int): Int = {
+    if (n < 0) throw new IllegalArgumentException("n must be a natural number!")
+    else n.toString().reverse.dropWhile(_ == "0").toInt // "".toInt == 0
+  }
 }

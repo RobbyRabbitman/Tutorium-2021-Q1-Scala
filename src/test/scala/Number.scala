@@ -182,4 +182,31 @@ class LcmTest extends FunSuite {
   test("Expect lcm(10,1000) to be lcm(1000,10) ")(assert(lcm(10, 1000) === lcm(1000, 10)))
 }
 
+class MirrorTest extends FunSuite {
+  test("Expect mirror of 1 to be 1")(assert(mirror(1) === 1))
+  test("Expect mirror of 0 to be 0")(assert(mirror(0) === 0))
+  test("Expect mirror of 10 to be 1")(assert(mirror(10) === 1))
+  test("Expect mirror of 100 to be 1")(assert(mirror(100) === 1))
+  test("Expect mirror of 1000 to be 1")(assert(mirror(1000) === 1))
+  test("Expect mirror of 321 to be 123")(assert(mirror(321) === 123))
+  test("Expect mirror of 123456789 to be 987654321")(assert(mirror(123456789) === 987654321))
+  test("Expect mirror of 1234567890 to be 987654321")(assert(mirror(1234567890) === 987654321))
+  test("Expect mirror of 101 to be 101")(assert(mirror(101) === 101))
+  test("Expect mirror of 1001 to be 1001")(assert(mirror(1001) === 1001))
+  test("Expect mirror of -1 to throw an Exception")(assertThrows[IllegalArgumentException](mirror(-1)))
+}
+
+class _MirrorTest extends FunSuite {
+  test("Expect _mirror of 0 to be 0")(assert(_mirror(0) === 0))
+  test("Expect _mirror of 1 to be 1")(assert(_mirror(1) === 1))
+  test("Expect _mirror of 10 to be 1")(assert(_mirror(10) === 1))
+  test("Expect _mirror of 100 to be 1")(assert(_mirror(100) === 1))
+  test("Expect _mirror of 1000 to be 1")(assert(_mirror(1000) === 1))
+  test("Expect _mirror of 321 to be 123")(assert(_mirror(321) === 123))
+  test("Expect _mirror of 123456789 to be 987654321")(assert(_mirror(123456789) === 987654321))
+  test("Expect _mirror of 1234567890 to be 987654321")(assert(_mirror(1234567890) === 987654321))
+  test("Expect _mirror of 101 to be 101")(assert(_mirror(101) === 101))
+  test("Expect _mirror of 1001 to be 1001")(assert(_mirror(1001) === 1001))
+  test("Expect _mirror of -1 to throw an Exception")(assertThrows[IllegalArgumentException](_mirror(-1)))
+}
 
