@@ -153,4 +153,21 @@ package object Number {
     else if(n == 0 || n == 1) n else fib(n-1) + fib(n-2)
   }
 
+  /**
+   *
+   * @param n n >= 2
+   * @return true if n is a prime number, else false
+   */
+  def isPrime(n:Int):Boolean={
+    if(n < 2) throw new IllegalArgumentException("n must be >= 2!")
+    if(n == 2 || n == 3) return true
+    if(n % 2 == 0) return false
+    var current = 3;
+    while(current < n){
+      if(n % current == 0) return false
+      current +=2
+    }
+    true
+  }
+
 }

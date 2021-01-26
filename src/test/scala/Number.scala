@@ -148,5 +148,16 @@ class FibTest extends FunSuite {
   test("Expect fib(-1) to be throw an Exception")(assertThrows[IllegalArgumentException](fib(-1)))
 }
 
+class IsPrimeTest extends FunSuite {
+  test("Expect 2 to be a prime number")(assert(isPrime(2)))
+  test("Expect 3 to be a prime number")(assert(isPrime(3)))
+  test("Expect 4 to not be a prime number")(assert(!isPrime(4)))
+  test("Expect 5 to be a prime number")(assert(isPrime(5)))
+  test("Expect 11 to be a prime number")(assert(isPrime(11)))
+  test("Expect 27 to not be a prime number")(assert(!isPrime(27)))
+  test("Expect 33 to not be a prime number")(assert(!isPrime(33)))
+  test("Expect 41 to be a prime number")(assert(isPrime(41)))
+  test("Expect 1 to throw an Exception")(assertThrows[IllegalArgumentException](isPrime(1)))
+}
 
 
