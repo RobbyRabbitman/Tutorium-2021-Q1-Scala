@@ -141,4 +141,16 @@ package object Number {
     val (d, s, _) = extendedEuclidAlgorithm(x, m)
     if (d == 1) Option(if (s < 0) s + m else s) else Option.empty
   }
+
+  /** Frage: Performant? Nein, da eigentlich schon bereits kalkulierte Ergebnisse immer wieder neu berechnet werden.
+   * f(n)=f(n-1)+f(n-2) = f(n-2)+f(n-3)+f(n-3)+f(n-4) = ...
+   *
+   * @param n n >= 0
+   * @return f(n)=f(n-1)+f(n-2), f(0)=0, f(1)=1
+   */
+  def fib(n:Int):Int = {
+    if(n < 0) throw new IllegalArgumentException("n must not be negative!")
+    else if(n == 0 || n == 1) n else fib(n-1) + fib(n-2)
+  }
+
 }

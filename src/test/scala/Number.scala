@@ -137,4 +137,16 @@ class ExtendedEuclidAlgorithmTest extends FunSuite {
   test("Expect extendedEuclidAlgorithm(99, 78) to be (3,-11,14)")(assert(extendedEuclidAlgorithm(99, 78) === (3, -11, 14)))
 }
 
+class FibTest extends FunSuite {
+  test("Expect fib(0) to be 0")(assert(fib(0)===0))
+  test("Expect fib(1) to be 1")(assert(fib(1)===1))
+  test("Expect fib(2) to be 1")(assert(fib(2)===1))
+  test("Expect fib(3) to be 2")(assert(fib(3)===2))
+  test("Expect fib(4) to be 3")(assert(fib(4)===3))
+  test("Expect fib(5) to be 5")(assert(fib(5)===5))
+  test("Expect fib(6) to be 8")(assert(fib(6)===8))
+  test("Expect fib(-1) to be throw an Exception")(assertThrows[IllegalArgumentException](fib(-1)))
+}
+
+
 
