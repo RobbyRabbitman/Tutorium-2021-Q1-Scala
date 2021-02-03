@@ -219,9 +219,6 @@ package object Number {
   def convert(n: Int, base: Int): Int = if (base <= 0 || base >= 10) throw new IllegalArgumentException()
   else if (n == 0) 0 else (n % base) + convert(n / base, base) * 10
 
-  def toOctal(n:Int):Int = convert(n,8)
+  def toOctal(n: Int): Int = convert(n, 8)
 
-  def concat(x:String,y:String):String = x.concat(y)
-  def head(of:String):Char = of.head
-  def tail(of:String):String = of.tail
 }
