@@ -143,7 +143,8 @@ package object Number {
   }
 
   /** Frage: Performant? Nein, da eigentlich schon bereits kalkulierte Ergebnisse immer wieder neu berechnet werden.
-   * f(n)=f(n-1)+f(n-2) = f(n-2)+f(n-3)+f(n-3)+f(n-4) = ...
+   * f(n)=f(n-1)+f(n-2) = f(n-2)+f(n-3)+f(n-3)+f(n-4) = ... = 1 + 1 + 1 + 1 ...
+   * besser: f(n) = f(n-1) + f(n-2) = x + y, x und y bereits berechnet
    *
    * @param n n >= 0
    * @return f(n)=f(n-1)+f(n-2), f(0)=0, f(1)=1
@@ -162,7 +163,7 @@ package object Number {
     if (n < 2) throw new IllegalArgumentException("n must be >= 2!")
     if (n == 2 || n == 3) return true
     if (n % 2 == 0) return false
-    var current = 3;
+    var current = 3
     while (current < n) {
       if (n % current == 0) return false
       current += 2
@@ -186,7 +187,7 @@ package object Number {
    * @param b
    * @return least common multiple using |a| and |b|
    */
-  def lcm(a: Int, b: Int): Int = if (a == 0 && b == 0) 0 else (abs(a) / gcd(a, b)) * abs(b)
+  def lcm(a: Int, b: Int): Int = if (a == 0 || b == 0) 0 else (abs(a) / gcd(a, b)) * abs(b)
 
   /**
    *
@@ -206,6 +207,17 @@ package object Number {
    */
   def _mirror(n: Int): Int = {
     if (n < 0) throw new IllegalArgumentException("n must be a natural number!")
-    else n.toString().reverse.dropWhile(_ == "0").toInt // "".toInt == 0
+    else n.toString().reverse.toInt // "".toInt == 0
   }
+
+  /**
+   *
+   * @param n to base 10
+   * @param base
+   * @return
+   */
+  def convert(n: Int, base: Int): Int = if (base <= 0 || base >= 10) throw new IllegalArgumentException()
+  else if (n == 0) 0 else (n % base) + convert(n / base, base) * 10
+
+  def toOctal(n:Int):Int = convert(n,8)
 }

@@ -210,3 +210,23 @@ class _MirrorTest extends FunSuite {
   test("Expect _mirror of -1 to throw an Exception")(assertThrows[IllegalArgumentException](_mirror(-1)))
 }
 
+class ToOctalTest extends FunSuite {
+  test("Expect 0(10) to be 0(8)")(assert(toOctal(0) === 0))
+  test("Expect 1(10) to be 1(8)")(assert(toOctal(1) === 1))
+  test("Expect 5(10) to be 5(8)")(assert(toOctal(5) === 5))
+  test("Expect 8(10) to be 10(8)")(assert(toOctal(8) === 10))
+  test("Expect 15(10) to be 17(8)")(assert(toOctal(15) === 17))
+  test("Expect 16(10) to be 20(8)")(assert(toOctal(16) === 20))
+  test("Expect 33(10) to be 41(8)")(assert(toOctal(33) === 41))
+}
+
+class ConvertTest extends FunSuite {
+  test("Expect 12(10) to be 1100(2)")(assert(convert(12, 2) === 1100))
+  test("Expect 0(10) to be 0(2)")(assert(convert(0, 2) === 0))
+  test("Expect 0(10) to be 0(1)")(assert(convert(0, 1) === 0))
+  test("Expect 0(10) to be 0(3)")(assert(convert(0, 3) === 0))
+  test("Expect 1(10) to be 1(2)")(assert(convert(1, 2) === 1))
+  test("Expect 2(10) to be 10(2)")(assert(convert(2, 2) === 10))
+  test("Expect 3(10) to be 11(2)")(assert(convert(3, 2) === 11))
+}
+
