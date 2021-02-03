@@ -39,4 +39,10 @@ package object String {
     else if (head(reverse(left)) == c) concat(concat(right, c), reverse(tail(reverse(left))))
     else swapAtHelper(concat(left, head(right)), tail(right), c)
   }
+
+  def shift(word: String): String = shiftHelper(word, "")
+
+  private def shiftHelper(in: String, out: String): String =
+    if (in.length <= 1) concat(in, out) else shiftHelper(tail(in), concat(out, head(in)))
+
 }

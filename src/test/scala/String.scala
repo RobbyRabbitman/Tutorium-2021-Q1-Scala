@@ -27,3 +27,10 @@ class SwapAtTest extends FunSuite {
   test("Expect swapping of 'Hello World' at 'l' to be 'lo WorldlHe'")(assert(swapAt("Hello World", 'l') === "lo WorldlHe"))
   test("Expect swapping of 'aabbcc' at 'b' to be 'bccbaa'")(assert(swapAt("aabbcc", 'b') === "bccbaa"))
 }
+
+class ShiftTest extends FunSuite {
+  test("Expect shift of 'Hello' to 'oHell'")(assert(shift("Hello") === "oHell"))
+  test("Expect shift of 'H' to 'H'")(assert(shift("H") === "H"))
+  test("Expect shift of 'H ' to ' H'")(assert(shift("H ") === " H"))
+  test("Expect shift of '' to ''")(assert(shift("") === ""))
+}
