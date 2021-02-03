@@ -45,4 +45,5 @@ package object String {
   private def shiftHelper(in: String, out: String): String =
     if (in.length <= 1) concat(in, out) else shiftHelper(tail(in), concat(out, head(in)))
 
+  def shiftBack(word: String): String = concat(tail(word), head(word))
 }

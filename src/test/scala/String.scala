@@ -34,3 +34,10 @@ class ShiftTest extends FunSuite {
   test("Expect shift of 'H ' to ' H'")(assert(shift("H ") === " H"))
   test("Expect shift of '' to ''")(assert(shift("") === ""))
 }
+
+class ShiftBackTest extends FunSuite {
+  test("Expect shift back of 'Hello' to 'oHell'")(assert(shiftBack("Hello") === "elloH"))
+  test("Expect shift back of 'H' to 'H'")(assert(shiftBack("H") === "H"))
+  test("Expect shift back of 'H ' to ' H'")(assert(shiftBack("H ") === " H"))
+  test("Expect shift back of '' to ''")(assert(shiftBack("") === ""))
+}
