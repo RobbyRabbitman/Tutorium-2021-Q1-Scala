@@ -1,16 +1,16 @@
 package object String {
   def concat(x: String, y: String): String = x.concat(y)
 
-  def head(of: String): Char = of.head
+  def head(of: String): String = if (of.isEmpty) "" else of.head.toString
 
-  def tail(of: String): String = of.tail
+  def tail(of: String): String = if (of.isEmpty) "" else of.tail
 
   /**
    *
    * @param word
    * @return word reversed. abcd -> dcba
    */
-  def reverse(word: String): String = if (word.length == 0) "" else concat(reverse(tail(word)), head(word).toString())
+  def reverse(word: String): String = if (word.length == 0) "" else concat(reverse(tail(word)), head(word))
 
   /**
    *
@@ -18,7 +18,7 @@ package object String {
    * @param searchTerm
    * @return how often word contains searchTearm. Returns 0 if searchTearm.length == 0
    *
-   * (HansHugo,Hans) -> 1, (aaabbb, a) -> 3
+   *         (HansHugo,Hans) -> 1, (aaabbb, a) -> 3
    */
   def containsHowOften(word: String, searchTerm: String): Int = {
     if (word.length < searchTerm.length || searchTerm.isEmpty) return 0
@@ -26,5 +26,17 @@ package object String {
     containsHowOften(tail(word), searchTerm) + contains
   }
 
+  /**
+   *
+   * @param word
+   * @param c
+   * @return swaps the word at the c or not if word does not contain c
+   */
+  def swapAt(word: String, c: Char): String = swapAtHelper("", word, c.toString)
 
+  private def swapAtHelper(left: String, right: String, c: String): String = {
+    if (right.isEmpty) left
+    else if (head(reverse(left)) == c) concat(concat(right, c), reverse(tail(reverse(left))))
+    else swapAtHelper(concat(left, head(right)), tail(right), c)
+  }
 }

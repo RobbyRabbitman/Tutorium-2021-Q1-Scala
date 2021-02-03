@@ -11,11 +11,19 @@ class ReverseTest extends FunSuite {
   test("Expect reverse of ' ' to be ' '")(assert(reverse(" ") === " "))
 }
 
-class ContainsHowOften extends FunSuite {
+class ContainsHowOftenTest extends FunSuite {
   test("Expect aaa to contain a 3 times")(assert(containsHowOften("aaa", "a") === 3))
   test("Expect aa a to contain a 3 times")(assert(containsHowOften("aa a", "a") === 3))
   test("Expect '' to contain a 0 times")(assert(containsHowOften("", "a") === 0))
   test("Expect '' to contain '' 0 times")(assert(containsHowOften("aaa", "a") === 3))
   test("Expect '   ' to contain '   ' 3 times")(assert(containsHowOften("   ", " ") === 3))
   test("Expect aaa to contain '' 0 times")(assert(containsHowOften("aaa", "") === 0))
+}
+
+class SwapAtTest extends FunSuite {
+  test("Expect swapping of 'Hello World' at ' ' to be 'World Hello'")(assert(swapAt("Hello World", ' ') === "World Hello"))
+  test("Expect swapping of 'Hello World' at 'x' to be 'World Hello'")(assert(swapAt("Hello World", 'x') === "Hello World"))
+  test("Expect swapping of 'Hello World' at 'H' to be 'World Hello'")(assert(swapAt("Hello World", 'H') === "ello WorldH"))
+  test("Expect swapping of 'Hello World' at 'l' to be 'lo WorldlHe'")(assert(swapAt("Hello World", 'l') === "lo WorldlHe"))
+  test("Expect swapping of 'aabbcc' at 'b' to be 'bccbaa'")(assert(swapAt("aabbcc", 'b') === "bccbaa"))
 }
