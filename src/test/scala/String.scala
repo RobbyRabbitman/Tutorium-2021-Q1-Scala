@@ -11,6 +11,13 @@ class ReverseTest extends FunSuite {
   test("Expect reverse of ' ' to be ' '")(assert(reverse(" ") === " "))
 }
 
+class RepeatTest extends FunSuite {
+  test("Expect 'Hello' repeated 3 times to be 'HelloHelloHello'")(assert(repeat("Hello", 3) === "HelloHelloHello"))
+  test("Expect 'Hello' repeated 0 times to be ''")(assert(repeat("Hello", 0) === ""))
+  test("Expect 'Hello' repeated -1 times to be ''")(assert(repeat("Hello", -1) === ""))
+  test("Expect 'Hello' repeated 1 times to be 'Hello'")(assert(repeat("Hello", 1) === "Hello"))
+}
+
 class ContainsHowOftenTest extends FunSuite {
   test("Expect aaa to contain a 3 times")(assert(containsHowOften("aaa", "a") === 3))
   test("Expect aa a to contain a 3 times")(assert(containsHowOften("aa a", "a") === 3))

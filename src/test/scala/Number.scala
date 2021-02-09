@@ -10,6 +10,12 @@ class AnswerToEveryThingTest extends FunSuite {
   test("Expect 41 not to be greater than the answer to everything")(assert(isGreaterThanAnswerToEverything(41) === false))
 }
 
+class AddOneTest extends FunSuite {
+  test("Expect 0 + 1 to be 1")(assert(addOne(0) === 1))
+  test("Expect -1 + 1 to be 0")(assert(addOne(-1) === 0))
+  test("Expect 1 + 1 to be 2")(assert(addOne(1) === 2))
+}
+
 class SquareTest extends FunSuite {
   test("Expect square of 2 to be 4")(assert(square(2) === 4))
   test("Expect square of -2 to be 4")(assert(square(-2) === 4))

@@ -11,6 +11,8 @@ package object Number {
    */
   def isGreaterThanAnswerToEverything(x: Int): Boolean = x > ANSWER_TO_EVERYTHING
 
+  def addOne(to:Int):Int = to + 1
+
   /** Fragen:
    * Vorteil Double gegenüber Int? Dezimalzahlen möglich.
    * Was passiert bei x * x > [[Double.MaxValue]]? Stackoverflow sagt [[Double.MaxValue]] + 1 = [[Double.PositiveInfinity]], also kein overflow

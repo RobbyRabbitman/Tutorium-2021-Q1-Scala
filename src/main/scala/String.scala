@@ -15,6 +15,14 @@ package object String {
   /**
    *
    * @param word
+   * @param times
+   * @return word n times concatenated, if n <= 0 an empty string will be returned.
+   */
+  def repeat(word: String, times: Int): String = if (times <= 0) "" else concat(word, repeat(word, times - 1))
+
+  /**
+   *
+   * @param word
    * @param searchTerm
    * @return how often word contains searchTearm. Returns 0 if searchTearm.length == 0
    *
