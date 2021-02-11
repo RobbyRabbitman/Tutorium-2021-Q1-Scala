@@ -1,5 +1,16 @@
 
 package object Boolean {
+
+  def trueValue():Boolean = {
+    println("return true!")
+    true
+  }
+
+  def falseValue():Boolean = {
+    println("return false!")
+    false
+  }
+
   /** Anmerkung: De-morgansche Gesetze
    *
    * @param x [[Boolean]]
