@@ -44,7 +44,7 @@ class ImpliesTest extends FunSuite {
 }
 
 /**
- *  30
+ *  30,31.32
  */
 class LazyDemo extends FunSuite {
 
@@ -60,6 +60,14 @@ class LazyDemo extends FunSuite {
     println(s"true | false = ${trueValue | falseValue}\n")
     println(s"false | true = ${falseValue | trueValue}\n")
     println(s"false | false = ${falseValue | falseValue}\n")
+  })
+
+  test("implies")({
+    println()
+    println(s"true implies true = ${implies(trueValue(),trueValue())}\n")
+    println(s"true implies false = ${implies(trueValue(),falseValue())}\n")
+    println(s"false implies true = ${implies(falseValue(),trueValue())}\n")
+    println(s"false implies false = ${implies(falseValue(),falseValue())}\n")
   })
 
   test("||")({

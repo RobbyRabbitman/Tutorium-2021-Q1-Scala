@@ -31,7 +31,7 @@ package object Boolean {
 
   def equal(x: Boolean, y: Boolean): Boolean = x == y
 
-  def implies(x: Boolean, y: Boolean): Boolean = !x || y
+  def implies(x: Boolean, y: => Boolean): Boolean = !x || y
 
   def xor_withIfs(x: Boolean, y: Boolean): Boolean = if (x) {
     if (y) false else true
