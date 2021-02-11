@@ -54,4 +54,19 @@ package object String {
     if (in.length <= 1) concat(in, out) else shiftHelper(tail(in), concat(out, head(in)))
 
   def shiftBack(word: String): String = concat(tail(word), head(word))
+
+  /**
+   *
+   * @param word
+   * @param other
+   * @return if word < other by character comparison (ASCII value)
+   */
+  def less(word: String, other: String): Boolean = !(word == other) && lessHelper(word, other)
+
+  private def lessHelper(word: String, other: String): Boolean =
+    try {
+      word.isEmpty || word.head < other.head && lessHelper(word.tail, other.tail)
+    } catch {
+      case _: Exception => false
+    }
 }

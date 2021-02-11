@@ -48,3 +48,16 @@ class ShiftBackTest extends FunSuite {
   test("Expect shift back of 'H ' to ' H'")(assert(shiftBack("H ") === " H"))
   test("Expect shift back of '' to ''")(assert(shiftBack("") === ""))
 }
+
+class LessTest extends FunSuite {
+  test("Expect less('','') to be false ")(assert(less("", "") === false))
+  test("Expect less('',' ') to be true ")(assert(less("", " ") === true))
+  test("Expect less(' ','') to be false ")(assert(less(" ", "") === false))
+  test("Expect less(' ',' ') to be false ")(assert(less(" ", " ") === false))
+  test("Expect less('a','a') to be false ")(assert(less("a", "a") === false))
+  test("Expect less('a','b') to be true ")(assert(less("a", "b") === true))
+  test("Expect less('A','a') to be true ")(assert(less("A", "a") === true))
+  test("Expect less('aa','a') to be false ")(assert(less("aa", "a") === false))
+  test("Expect less('a','') to be false ")(assert(less("a", "") === false))
+  test("Expect less('a',' ') to be false ")(assert(less("a", " ") === false))
+}
