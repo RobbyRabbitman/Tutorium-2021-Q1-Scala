@@ -61,12 +61,9 @@ package object String {
    * @param other
    * @return if word < other by character comparison (ASCII value)
    */
-  def less(word: String, other: String): Boolean = !(word == other) && lessHelper(word, other)
+  def less(word: String, other: String): Boolean = word != other && lessHelper(word, other)
 
   private def lessHelper(word: String, other: String): Boolean =
-    try {
-      word.isEmpty || word.head < other.head && lessHelper(word.tail, other.tail)
-    } catch {
-      case _: Exception => false
-    }
+    word.isEmpty || other.nonEmpty && word.head <= other.head && lessHelper(word.tail, other.tail)
+
 }

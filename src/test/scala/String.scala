@@ -60,4 +60,6 @@ class LessTest extends FunSuite {
   test("Expect less('aa','a') to be false ")(assert(less("aa", "a") === false))
   test("Expect less('a','') to be false ")(assert(less("a", "") === false))
   test("Expect less('a',' ') to be false ")(assert(less("a", " ") === false))
+  test("Expect less('aa',' aaa') to be true ")(assert(less("aa", "aaa") === true))
+  test("Expect less('bb',' aaa') to be false ")(assert(less("bb", "aaa") === false))
 }
