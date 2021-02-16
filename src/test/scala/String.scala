@@ -63,3 +63,14 @@ class LessTest extends FunSuite {
   test("Expect less('aa',' aaa') to be true ")(assert(less("aa", "aaa") === true))
   test("Expect less('bb',' aaa') to be false ")(assert(less("bb", "aaa") === false))
 }
+
+class ToStringTest extends FunSuite {
+  test("Expect toString(true) to be 'true'")(assert(ToString(true) === "true"))
+  test("Expect toString(false) to be 'false'")(assert(ToString(false) === "false"))
+  test("Expect toString('some string') to be 'some string'")(assert(ToString("some string") === "some string"))
+  test("Expect toString('') to be ''")(assert(ToString("") === ""))
+  test("Expect toString(0) to be '0'")(assert(ToString(0) === "0"))
+  test("Expect toString(1) to be '1'")(assert(ToString(1) === "1"))
+  test("Expect toString(-1) to be '-1'")(assert(ToString(-1) === "-1"))
+  test("Expect toString(123456) to be '123456'")(assert(ToString(123456) === "123456"))
+}

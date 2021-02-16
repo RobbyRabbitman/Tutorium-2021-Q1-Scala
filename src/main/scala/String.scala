@@ -66,4 +66,27 @@ package object String {
   private def lessHelper(word: String, other: String): Boolean =
     word.isEmpty || other.nonEmpty && word.head <= other.head && lessHelper(word.tail, other.tail)
 
+  def ToString(x: Boolean): String = if (x) "true" else "false"
+
+  def ToString(x: String): String = x
+
+  def ToString(x: Int): String = if (x < 0) "-" + ToStringHelper(math.abs(x)) else ToStringHelper(x)
+
+  def ToStringHelper(x: Int): String = if (x < 10) digitToString(x) else ToString(x / 10) + digitToString(x % 10)
+
+  def digitToString(x: Int): String = {
+    x match {
+      case 0 => "0"
+      case 1 => "1"
+      case 2 => "2"
+      case 3 => "3"
+      case 4 => "4"
+      case 5 => "5"
+      case 6 => "6"
+      case 7 => "7"
+      case 8 => "8"
+      case 9 => "9"
+      case _ => throw new IllegalArgumentException(s"${x} is not a digit!")
+    }
+  }
 }
