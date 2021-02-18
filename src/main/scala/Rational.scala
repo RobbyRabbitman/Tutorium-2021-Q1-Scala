@@ -23,4 +23,9 @@ package object Rational {
     val sign: Int = if (r.denominator < 0) -1 else 1
     new Rational(r.enumerator / gcd * sign, abs(r.denominator / gcd))
   }
+
+  def sameValue(r1: Rational, r2: Rational): Boolean =
+  // Funktioniert nur, weil die immer gekürzt sind -> siehe createRational
+    r1.denominator == r2.denominator && r1.enumerator == r2.enumerator
+
 }

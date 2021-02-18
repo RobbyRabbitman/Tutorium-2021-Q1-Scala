@@ -28,3 +28,10 @@ class ToCanonicalTest extends FunSuite {
   test("Expect 2/-4 to be -1/2")(assert(toCanonical(new Rational(2, -4)) === new Rational(-1, 2)))
   test("Expect -2/-4 to be 1/2")(assert(toCanonical(new Rational(-2, -4)) === new Rational(1, 2)))
 }
+
+class SameValueTest extends FunSuite {
+  test("Expect 1/2 to be 2/4")(assert(sameValue(createRational(1, 2), createRational(2, 4))))
+  test("Expect -1/-2 to be 2/4")(assert(sameValue(createRational(-1, -2), createRational(2, 4))))
+  test("Expect -1/2 not to be 2/4")(assert(!sameValue(createRational(-1, 2), createRational(2, 4))))
+  test("Expect 1/2 not to be -2/4")(assert(!sameValue(createRational(1, 2), createRational(-2, 4))))
+}
