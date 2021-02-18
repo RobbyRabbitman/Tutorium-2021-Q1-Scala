@@ -25,7 +25,10 @@ package object Rational {
   }
 
   def sameValue(r1: Rational, r2: Rational): Boolean =
-  // Funktioniert nur, weil die immer gekürzt sind -> siehe createRational
+  // Funktioniert nur, weil die immer gekürzt und Vorzeichen in Zähler -> siehe createRational
     r1.denominator == r2.denominator && r1.enumerator == r2.enumerator
 
+  def less(r1: Rational, r2: Rational): Boolean =
+  // Funktioniert nur, weil die immer gekürzt und Vorzeichen in Zähler -> siehe createRational
+    r1.enumerator < r2.enumerator
 }

@@ -35,3 +35,11 @@ class SameValueTest extends FunSuite {
   test("Expect -1/2 not to be 2/4")(assert(!sameValue(createRational(-1, 2), createRational(2, 4))))
   test("Expect 1/2 not to be -2/4")(assert(!sameValue(createRational(1, 2), createRational(-2, 4))))
 }
+
+class LessRationalTest extends FunSuite {
+  test("Expect 1/2 to be less than 3/4")(assert(less(createRational(1, 2), createRational(3, 4))))
+  test("Expect -1/2 to be less than 3/4")(assert(less(createRational(-1, 2), createRational(3, 4))))
+  test("Expect 1/2 not to be less than 3/-4")(assert(!less(createRational(1, 2), createRational(3, -4))))
+  test("Expect 1/2 not to be less than -3/4")(assert(!less(createRational(1, 2), createRational(-3, 4))))
+  test("Expect 1/2 not to be less than 2/4")(assert(!less(createRational(1, 2), createRational(2, 4))))
+}
