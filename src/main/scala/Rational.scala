@@ -12,7 +12,7 @@ package object Rational {
    */
   def createRational(enumerator: Int, denominator: Int): Rational =
     if (denominator == 0)
-      throw new IllegalArgumentException("Denominator must not be 0!")
+      throw new ArithmeticException("Denominator must not be 0!")
     else
       toCanonical(new Rational(enumerator, denominator))
 
@@ -25,10 +25,20 @@ package object Rational {
   }
 
   def sameValue(r1: Rational, r2: Rational): Boolean =
-  // Funktioniert nur, weil die immer gekürzt und Vorzeichen in Zähler -> siehe createRational
     r1.denominator == r2.denominator && r1.enumerator == r2.enumerator
 
   def less(r1: Rational, r2: Rational): Boolean =
-  // Funktioniert nur, weil die immer gekürzt und Vorzeichen in Zähler -> siehe createRational
-    r1.enumerator < r2.enumerator
+    r1.enumerator * r2.denominator < r2.enumerator * r1.denominator
+
+  def add(r1: Rational, r2: Rational): Rational =
+    createRational(r2.denominator * r1.enumerator + r1.denominator * r2.enumerator, r1.denominator * r2.denominator)
+
+  def sub(r1: Rational, r2: Rational): Rational =
+    createRational(r2.denominator * r1.enumerator - r1.denominator * r2.enumerator, r1.denominator * r2.denominator)
+
+  def mult(r1: Rational, r2: Rational): Rational =
+    createRational(r1.enumerator * r2.enumerator, r1.denominator * r2.denominator)
+
+  def divide(r1: Rational, r2: Rational): Rational =
+    createRational(r1.enumerator * r2.denominator, r1.denominator * r2.enumerator)
 }
