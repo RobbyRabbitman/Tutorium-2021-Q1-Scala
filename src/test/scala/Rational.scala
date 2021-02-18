@@ -10,3 +10,10 @@ class CreateRationalTest extends FunSuite {
     case _: Exception =>
   })
 }
+
+class ToDivStringTest extends FunSuite {
+  test("Expect 1/2 to be '1/2'")(assert(toDivString(new Rational(1, 2)) === "1/2"))
+  test("Expect -1/2 to be '-1/2'")(assert(toDivString(new Rational(-1, 2)) === "-1/2"))
+  test("Expect 1/-2 to be '1/-2'")(assert(toDivString(new Rational(1, -2)) === "1/-2"))
+  test("Expect -1/-2 to be '-1/-2'")(assert(toDivString(new Rational(-1, -2)) === "-1/-2"))
+}

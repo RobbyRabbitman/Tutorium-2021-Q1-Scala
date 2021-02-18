@@ -1,5 +1,7 @@
 case class Rational(enumerator: Int, denominator: Int)
 
+import _root_.String._
+
 package object Rational {
   /**
    *
@@ -11,5 +13,7 @@ package object Rational {
     if (denominator == 0)
       throw new IllegalArgumentException("Denominator must not be 0!")
     else
-     new Rational(enumerator, denominator)
+      new Rational(enumerator, denominator)
+
+  def toDivString(r: Rational): String = ToString(r.enumerator) + "/" + ToString(r.denominator)
 }
