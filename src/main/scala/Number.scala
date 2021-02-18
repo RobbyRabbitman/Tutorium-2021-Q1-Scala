@@ -1,3 +1,6 @@
+import _root_.RationalNumber._
+import _root_.ComplexRational._
+
 package object Number {
   /**
    * Answer to everything
@@ -11,7 +14,7 @@ package object Number {
    */
   def isGreaterThanAnswerToEverything(x: Int): Boolean = x > ANSWER_TO_EVERYTHING
 
-  def addOne(to:Int):Int = to + 1
+  def addOne(to: Int): Int = to + 1
 
   /** Fragen:
    * Vorteil Double gegenüber Int? Dezimalzahlen möglich.
@@ -85,7 +88,7 @@ package object Number {
    *
    * @param x [[Int]]
    * @param y [[Int]] >= 0
-   * @return x^y
+   * @return x^y^
    */
   def power(x: Int, y: Int): Int = {
     if (y < 0) throw new IllegalArgumentException("Exponent must not be negative! Provided " + y)
@@ -96,7 +99,7 @@ package object Number {
    *
    * @param x [[Int]]
    * @param y [[Int]] >= 0
-   * @return x^y
+   * @return x^y^
    */
   def _power(x: Int, y: Int): Int = {
     if (y < 0) throw new IllegalArgumentException("Exponent must not be negative! Provided " + y)
@@ -223,4 +226,35 @@ package object Number {
 
   def toOctal(n: Int): Int = convert(n, 8)
 
+  def add(x1: Any, x2: Any): Any = getSmallestType(addHelper(x1, x2))
+
+  def addHelper(x1: Any, x2: Any): Any =
+    (x1, x2) match {
+      case (x1: Int, x2: Int) => x1 + x2
+      case (x1: Int, x2: RationalNumber) => addIntAndRational(x1, x2)
+      case (x1: RationalNumber, x2: Int) => addIntAndRational(x2, x1)
+      case (x1: RationalNumber, x2: RationalNumber) => _root_.RationalNumber.add(x1, x2)
+      case (x1: RationalNumber, x2: ComplexRational) => addRationalAndComplex(x1, x2)
+      case (x1: ComplexRational, x2: RationalNumber) => addRationalAndComplex(x2, x1)
+      case (x1: ComplexRational, x2: ComplexRational) => _root_.ComplexRational.add(x1, x2)
+      case (x1: Int, x2: ComplexRational) => addIntAndComplex(x1, x2)
+      case (x1: ComplexRational, x2: Int) => addIntAndComplex(x2, x1)
+      case _ => throw new IllegalArgumentException("No match found")
+    }
+
+  def getSmallestType(x: Any): Any = x match {
+    case x: Int => x
+    case x: RationalNumber => if (x.denominator == 1) x.enumerator else x
+    case x: ComplexRational => if (x.i.enumerator == 0)
+      if (x.r.denominator == 1) x.r.enumerator else x.r else x
+    case _ => throw new IllegalArgumentException("No match found")
+  }
+
+  def addIntAndRational(n: Int, r: RationalNumber): RationalNumber =
+    _root_.RationalNumber.add(createRational(n, 1), r)
+
+  def addIntAndComplex(n: Int, c: ComplexRational): Any = addRationalAndComplex(createRational(n, 0), c)
+
+  def addRationalAndComplex(r: RationalNumber, c: ComplexRational): Any =
+    _root_.ComplexRational.add(new ComplexRational(r, createRational(0, 1)), c)
 }

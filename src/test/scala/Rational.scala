@@ -1,5 +1,5 @@
 import org.scalatest.FunSuite
-import _root_.Rational._
+import _root_.RationalNumber._
 
 class CreateRationalTest extends FunSuite {
   test("Create 1/2")(createRational(1, 2))
@@ -19,14 +19,14 @@ class ToDivStringTest extends FunSuite {
 }
 
 class ToCanonicalTest extends FunSuite {
-  test("Expect 1/2 to be 1/2")(assert(toCanonical(new Rational(1, 2)) === new Rational(1, 2)))
-  test("Expect 2/4 to be 1/2")(assert(toCanonical(new Rational(2, 4)) === new Rational(1, 2)))
-  test("Expect -1/2 to be -1/2")(assert(toCanonical(new Rational(-1, 2)) === new Rational(-1, 2)))
-  test("Expect 1/-2 to be -1/2")(assert(toCanonical(new Rational(1, -2)) === new Rational(-1, 2)))
-  test("Expect -1/-2 to be 1/2")(assert(toCanonical(new Rational(-1, -2)) === new Rational(1, 2)))
-  test("Expect -2/4 to be -1/2")(assert(toCanonical(new Rational(-2, 4)) === new Rational(-1, 2)))
-  test("Expect 2/-4 to be -1/2")(assert(toCanonical(new Rational(2, -4)) === new Rational(-1, 2)))
-  test("Expect -2/-4 to be 1/2")(assert(toCanonical(new Rational(-2, -4)) === new Rational(1, 2)))
+  test("Expect 1/2 to be 1/2")(assert(toCanonical(new RationalNumber(1, 2)) === new RationalNumber(1, 2)))
+  test("Expect 2/4 to be 1/2")(assert(toCanonical(new RationalNumber(2, 4)) === new RationalNumber(1, 2)))
+  test("Expect -1/2 to be -1/2")(assert(toCanonical(new RationalNumber(-1, 2)) === new RationalNumber(-1, 2)))
+  test("Expect 1/-2 to be -1/2")(assert(toCanonical(new RationalNumber(1, -2)) === new RationalNumber(-1, 2)))
+  test("Expect -1/-2 to be 1/2")(assert(toCanonical(new RationalNumber(-1, -2)) === new RationalNumber(1, 2)))
+  test("Expect -2/4 to be -1/2")(assert(toCanonical(new RationalNumber(-2, 4)) === new RationalNumber(-1, 2)))
+  test("Expect 2/-4 to be -1/2")(assert(toCanonical(new RationalNumber(2, -4)) === new RationalNumber(-1, 2)))
+  test("Expect -2/-4 to be 1/2")(assert(toCanonical(new RationalNumber(-2, -4)) === new RationalNumber(1, 2)))
 }
 
 class SameValueTest extends FunSuite {

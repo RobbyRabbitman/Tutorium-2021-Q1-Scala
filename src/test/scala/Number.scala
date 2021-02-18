@@ -1,5 +1,7 @@
 import org.scalatest.FunSuite
 import _root_.Number._
+import _root_.RationalNumber._
+import _root_.ComplexRational._
 
 class AnswerToEveryThingTest extends FunSuite {
   test("Expect the answer to everything to be 42")(assert(ANSWER_TO_EVERYTHING === 42))
@@ -236,3 +238,11 @@ class ConvertTest extends FunSuite {
   test("Expect 3(10) to be 11(2)")(assert(convert(3, 2) === 11))
 }
 
+class AddTest extends FunSuite {
+  test("Expect 1 + 1/2 to be 3/2")(assert(_root_.Number.add(1, createRational(1, 2)) === createRational(3, 2)))
+  test("Expect 3/2 + 1/2 to be 2")(assert(_root_.Number.add(createRational(3, 2), createRational(1, 2)) === 2))
+  test("Expect -3/2 + 1/2 to be -1")(assert(_root_.Number.add(createRational(-3, 2), createRational(1, 2)) === -1))
+  test("Expect 1/3 + 1/2 to be 5/6")(assert(_root_.Number.add(createRational(1, 3), createRational(1, 2)) === createRational(5, 6)))
+  test("Expect 1/3 + 1/2 + 5i to be 5/6 + 5i")(assert(_root_.Number.add(createRational(1, 3), new ComplexRational(createRational(1, 2), createRational(5, 1))) === new ComplexRational(createRational(5, 6), createRational(5, 1))))
+  test("Expect 1/3 + 1/2 + 0i to be 5/6")(assert(_root_.Number.add(createRational(1, 3), new ComplexRational(createRational(1, 2), createRational(0, 1))) === createRational(5, 6)))
+}
