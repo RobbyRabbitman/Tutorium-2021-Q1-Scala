@@ -226,6 +226,14 @@ package object Number {
 
   def toOctal(n: Int): Int = convert(n, 8)
 
+  def getSmallestType(x: Any): Any = x match {
+    case x: Int => x
+    case x: RationalNumber => if (x.denominator == 1) x.enumerator else x
+    case x: ComplexRational => if (x.i.enumerator == 0)
+      if (x.r.denominator == 1) x.r.enumerator else x.r else x
+    case _ => throw new IllegalArgumentException("No match found")
+  }
+
   def add(x1: Any, x2: Any): Any = getSmallestType(addHelper(x1, x2))
 
   def addHelper(x1: Any, x2: Any): Any =
@@ -242,19 +250,36 @@ package object Number {
       case _ => throw new IllegalArgumentException("No match found")
     }
 
-  def getSmallestType(x: Any): Any = x match {
-    case x: Int => x
-    case x: RationalNumber => if (x.denominator == 1) x.enumerator else x
-    case x: ComplexRational => if (x.i.enumerator == 0)
-      if (x.r.denominator == 1) x.r.enumerator else x.r else x
-    case _ => throw new IllegalArgumentException("No match found")
-  }
-
   def addIntAndRational(n: Int, r: RationalNumber): RationalNumber =
     _root_.RationalNumber.add(createRational(n, 1), r)
 
-  def addIntAndComplex(n: Int, c: ComplexRational): Any = addRationalAndComplex(createRational(n, 0), c)
+  def addIntAndComplex(n: Int, c: ComplexRational): Any = addRationalAndComplex(createRational(n, 1), c)
 
   def addRationalAndComplex(r: RationalNumber, c: ComplexRational): Any =
     _root_.ComplexRational.add(new ComplexRational(r, createRational(0, 1)), c)
+
+
+  def mult(x1: Any, x2: Any): Any = getSmallestType(multHelper(x1, x2))
+
+  def multHelper(x1: Any, x2: Any): Any =
+    (x1, x2) match {
+      case (x1: Int, x2: Int) => x1 + x2
+      case (x1: Int, x2: RationalNumber) => multIntAndRational(x1, x2)
+      case (x1: RationalNumber, x2: Int) => multIntAndRational(x2, x1)
+      case (x1: RationalNumber, x2: RationalNumber) => _root_.RationalNumber.mult(x1, x2)
+      case (x1: RationalNumber, x2: ComplexRational) => multRationalAndComplex(x1, x2)
+      case (x1: ComplexRational, x2: RationalNumber) => multRationalAndComplex(x2, x1)
+      case (x1: ComplexRational, x2: ComplexRational) => _root_.ComplexRational.mult(x1, x2)
+      case (x1: Int, x2: ComplexRational) => multIntAndComplex(x1, x2)
+      case (x1: ComplexRational, x2: Int) => multIntAndComplex(x2, x1)
+      case _ => throw new IllegalArgumentException("No match found")
+    }
+
+  def multIntAndRational(n: Int, r: RationalNumber): RationalNumber =
+    _root_.RationalNumber.mult(createRational(n, 1), r)
+
+  def multIntAndComplex(n: Int, c: ComplexRational): Any = multRationalAndComplex(createRational(n, 1), c)
+
+  def multRationalAndComplex(r: RationalNumber, c: ComplexRational): Any =
+    _root_.ComplexRational.mult(new ComplexRational(r, createRational(0, 1)), c)
 }

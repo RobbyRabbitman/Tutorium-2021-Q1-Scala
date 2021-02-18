@@ -246,3 +246,12 @@ class AddTest extends FunSuite {
   test("Expect 1/3 + 1/2 + 5i to be 5/6 + 5i")(assert(_root_.Number.add(createRational(1, 3), new ComplexRational(createRational(1, 2), createRational(5, 1))) === new ComplexRational(createRational(5, 6), createRational(5, 1))))
   test("Expect 1/3 + 1/2 + 0i to be 5/6")(assert(_root_.Number.add(createRational(1, 3), new ComplexRational(createRational(1, 2), createRational(0, 1))) === createRational(5, 6)))
 }
+
+class MultTest extends FunSuite {
+  test("Expect 1 * 1/2 to be 1/2")(assert(_root_.Number.mult(1, createRational(1, 2)) === createRational(1, 2)))
+  test("Expect 2/1 * 1/2 to be 1")(assert(_root_.Number.mult(createRational(2, 1), createRational(1, 2)) === 1))
+  test("Expect -3/2 * 1/2 to be -3/4")(assert(_root_.Number.mult(createRational(-3, 2), createRational(1, 2)) === createRational(-3,4)))
+  test("Expect 1/3 * 0 to be 0")(assert(_root_.Number.mult(createRational(1, 3), 0) === 0))
+  test("Expect 3 + 5i * 4 + 11i to be -43 + 53i")(assert(_root_.Number.mult(new ComplexRational(createRational(3, 1), createRational(5, 1)), new ComplexRational(createRational(4, 1), createRational(11, 1))) === new ComplexRational(createRational(-43, 1), createRational(53, 1))))
+  test("Expect 0 * 1/2 + 0i to be 0")(assert(_root_.Number.mult(0, new ComplexRational(createRational(1, 2), createRational(0, 1))) === 0))
+}
