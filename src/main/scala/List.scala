@@ -26,4 +26,12 @@ package object List {
     case x: EmptyList => ""
     case x: NonEmptyList => x.value.toString + "," + ToStringHelper(x.rest)
   }
+
+  def flatten(x: List): List = x match {
+    case x: EmptyList => x
+    case x: NonEmptyList => x.value match {
+      case value: List => append(flatten(value), flatten(x.rest))
+      case value: Any => NonEmptyList(value, flatten(x.rest))
+    }
+  }
 }
