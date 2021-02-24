@@ -20,3 +20,8 @@ class ListReverseTest extends FunSuite {
   test("Expect reverse of [1,2,3,4] to be [4,3,2,1]")(assert(reverse(NonEmptyList(1, NonEmptyList(2, NonEmptyList(3, NonEmptyList(4, EmptyList()))))) === NonEmptyList(4, NonEmptyList(3, NonEmptyList(2, NonEmptyList(1, EmptyList()))))))
 }
 
+class ListToStringTest extends FunSuite {
+  test("Expect tostring of [] to be []")(assert(ToString(EmptyList()) === "[]"))
+  test("Expect tostring of [1] to be [1]")(assert(ToString(NonEmptyList(1, EmptyList())) === "[1]"))
+  test("Expect tostring of [1,2,3,4] to be [1,2,3,4]")(assert(ToString(NonEmptyList(1, NonEmptyList(2, NonEmptyList(3, NonEmptyList(4, EmptyList()))))) === "[1,2,3,4]"))
+}

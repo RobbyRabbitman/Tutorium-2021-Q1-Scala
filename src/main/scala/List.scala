@@ -19,4 +19,11 @@ package object List {
     case x: EmptyList => x
     case x: NonEmptyList => append(reverse(x.rest), NonEmptyList(x.value, EmptyList()))
   }
+
+  def ToString(x: List): String = "[" + ToStringHelper(x).dropRight(1) + "]"
+
+  private def ToStringHelper(x: List): String = x match {
+    case x: EmptyList => ""
+    case x: NonEmptyList => x.value.toString + "," + ToStringHelper(x.rest)
+  }
 }
