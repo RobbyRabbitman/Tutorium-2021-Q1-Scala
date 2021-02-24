@@ -14,3 +14,9 @@ class ListAppendTest extends FunSuite {
   test("Expect [1,2] + [3,4] to be [1,2,3,4]")(assert(append(NonEmptyList(1, NonEmptyList(2, EmptyList())), NonEmptyList(3, NonEmptyList(4, EmptyList()))) === NonEmptyList(1, NonEmptyList(2, NonEmptyList(3, NonEmptyList(4, EmptyList()))))))
 }
 
+class ListReverseTest extends FunSuite {
+  test("Expect reverse of [] to be []")(assert(reverse(EmptyList()) === EmptyList()))
+  test("Expect reverse of [1] to be [1]")(assert(reverse(NonEmptyList(1, EmptyList())) === NonEmptyList(1, EmptyList())))
+  test("Expect reverse of [1,2,3,4] to be [4,3,2,1]")(assert(reverse(NonEmptyList(1, NonEmptyList(2, NonEmptyList(3, NonEmptyList(4, EmptyList()))))) === NonEmptyList(4, NonEmptyList(3, NonEmptyList(2, NonEmptyList(1, EmptyList()))))))
+}
+
