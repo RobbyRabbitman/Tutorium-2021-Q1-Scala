@@ -1,3 +1,6 @@
+import scala.annotation.tailrec
+import scala.util.Random
+
 abstract sealed class List
 
 case class EmptyList() extends List
@@ -34,4 +37,34 @@ package object List {
       case value: Any => NonEmptyList(value, flatten(x.rest))
     }
   }
+
+  def createRandomIntList(n: Int = 50): List =
+    if (n < 0) throw new IllegalArgumentException()
+    else if (n == 0) EmptyList()
+    else NonEmptyList(Random.nextInt(100), createRandomIntList(n - 1))
+
+
+  def compare(x: Any, y: Any): Boolean = (x, y) match {
+    case (x: Int, y: Int) => x < y
+  }
+
+
+  private def bubbleOneRun(list: List): List = list match {
+    case list: EmptyList => list
+    case list: NonEmptyList => list.rest match {
+      case rest: EmptyList => list
+      case rest: NonEmptyList =>
+        if (compare(list.value, rest.value)) NonEmptyList(list.value, rest)
+        else NonEmptyList(rest.value, NonEmptyList(list.value, rest.rest))
+    }
+  }
+
+  private def bubbleSortHelper(current: List, upTo: Int): List =
+    if (upTo == 0) current
+    else bubbleSortHelper(bubbleOneRun(current), upTo - 1)
+
+
+  def bubbleSort(list: List): List = bubbleSortHelper(list, length(list))
+
+
 }

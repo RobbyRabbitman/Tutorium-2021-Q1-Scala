@@ -31,3 +31,8 @@ class ListFlattenTest extends FunSuite {
   test("Expect flatten of [[[]],[]] to be []")(assert(flatten(NonEmptyList(NonEmptyList(NonEmptyList(EmptyList(), EmptyList()), EmptyList()), NonEmptyList(EmptyList(), EmptyList()))) === EmptyList()))
   test("Expect flatten of [[[1]],[2]] to be [1,2]")(assert(flatten(NonEmptyList(NonEmptyList(NonEmptyList(1, EmptyList()), EmptyList()), NonEmptyList(2, EmptyList()))) === NonEmptyList(1, NonEmptyList(2, EmptyList()))))
 }
+
+class CreateRandomListTest extends FunSuite {
+  test("Expect createRandomList(50) to have 50 elements")(assert(length(createRandomIntList()) === 50))
+  test("Expect createRandomList(0) to have 0 elements")(assert(length(createRandomIntList(0)) === 0))
+}
