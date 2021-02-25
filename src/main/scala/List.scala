@@ -65,5 +65,27 @@ package object List {
 
   def bubbleSort(list: List): List = bubbleSortHelper(list, length(list))
 
+  case class ListPair(firstList: List, secondList: List)
 
+  def quickSort(l: List): List = l match {
+    case l: EmptyList => l
+    case l: NonEmptyList => {
+      val partitionedInput: ListPair = partition(l);
+      append(quickSort(partitionedInput.firstList), NonEmptyList(l.value, quickSort(partitionedInput.secondList)))
+    }
+  }
+
+  private def partition(l: List): ListPair = l match {
+    case l: EmptyList => ListPair(EmptyList(), EmptyList())
+    case l: NonEmptyList => partitionHelper(l.value, l.rest, EmptyList(), EmptyList())
+  }
+
+  private def partitionHelper(pivot: Any, current: List, left: List, right: List): ListPair = current match {
+    case current: EmptyList => ListPair(left, right)
+    case current: NonEmptyList =>
+      if (compare(current.value, pivot))
+        partitionHelper(pivot, current.rest, NonEmptyList(current.value, left), right)
+      else
+        partitionHelper(pivot, current.rest, left, NonEmptyList(current.value, right))
+  }
 }
