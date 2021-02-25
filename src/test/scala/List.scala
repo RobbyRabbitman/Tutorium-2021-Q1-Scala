@@ -36,3 +36,8 @@ class CreateRandomListTest extends FunSuite {
   test("Expect createRandomList(50) to have 50 elements")(assert(length(createRandomIntList()) === 50))
   test("Expect createRandomList(0) to have 0 elements")(assert(length(createRandomIntList(0)) === 0))
 }
+
+class BubbleSortTest extends FunSuite {
+  test("10")(println(ToString(bubbleSort(createRandomIntList(10)))))
+  test("100")(println(ToString(bubbleSort(createRandomIntList(100)))))
+}

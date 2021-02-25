@@ -48,14 +48,13 @@ package object List {
     case (x: Int, y: Int) => x < y
   }
 
-
   private def bubbleOneRun(list: List): List = list match {
     case list: EmptyList => list
     case list: NonEmptyList => list.rest match {
       case rest: EmptyList => list
       case rest: NonEmptyList =>
-        if (compare(list.value, rest.value)) NonEmptyList(list.value, rest)
-        else NonEmptyList(rest.value, NonEmptyList(list.value, rest.rest))
+        if (compare(list.value, rest.value)) NonEmptyList(list.value, bubbleOneRun(rest))
+        else NonEmptyList(rest.value, bubbleOneRun(NonEmptyList(list.value, rest.rest)))
     }
   }
 
