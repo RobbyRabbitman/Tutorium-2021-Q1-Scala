@@ -41,3 +41,25 @@ class BubbleSortTest extends FunSuite {
   test("10")(println(ToString(bubbleSort(createRandomIntList(10)))))
   test("100")(println(ToString(bubbleSort(createRandomIntList(100)))))
 }
+
+class ListPerformace extends FunSuite {
+  def executionTime(f: List => List, input: List): Long
+  = {
+    val start: Long = System.nanoTime()
+    f(input)
+    System.nanoTime() - start
+  }
+
+  test("1000")(
+    {
+      val list1: List = createRandomIntList(1000)
+      val list2: List = copy(list1)
+      val QsTime: Long = executionTime(bubbleSort, list1)
+      val BsTime: Long = executionTime(quickSort, list2)
+      val proportion: Long = QsTime / BsTime;
+      println("BubbleSort(1000) = " + QsTime)
+      println("Quicksort(1000) = " + BsTime)
+      println("Relative speed of Qs to Bs = " + proportion)
+    }
+  )
+}

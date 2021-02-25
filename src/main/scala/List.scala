@@ -13,6 +13,11 @@ package object List {
     case x: NonEmptyList => 1 + length(x.rest)
   }
 
+  def copy(x: List): List = x match {
+    case x: EmptyList => x
+    case x: NonEmptyList => NonEmptyList(x.value, x.rest)
+  }
+
   def append(x: List, y: List): List = x match {
     case x: EmptyList => y
     case x: NonEmptyList => NonEmptyList(x.value, append(x.rest, y))
