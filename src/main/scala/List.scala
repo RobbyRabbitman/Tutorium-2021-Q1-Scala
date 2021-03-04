@@ -93,4 +93,20 @@ package object List {
       else
         partitionHelper(pivot, current.rest, left, NonEmptyList(current.value, right))
   }
+
+  def splitAt(l: List, pos: Int): ListPair = {
+    if (pos >= _root_.List.length(l)) ListPair(l, EmptyList())
+    else splitAtHelper(l, pos)
+  }
+
+  private def splitAtHelper(l: List, pos: Int): ListPair = {
+    if (pos == 0) ListPair(EmptyList(), l)
+    else l match {
+      case l: EmptyList => ListPair(EmptyList(), EmptyList())
+      case l: NonEmptyList => {
+        val nextPair: ListPair = splitAtHelper(l.rest, pos - 1)
+        ListPair(NonEmptyList(l.value, nextPair.firstList), nextPair.secondList)
+      }
+    }
+  }
 }
