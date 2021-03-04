@@ -42,6 +42,16 @@ class BubbleSortTest extends FunSuite {
   test("100")(println(ToString(bubbleSort(createRandomIntList(100)))))
 }
 
+class QuickSortTest extends FunSuite {
+  test("10")(println(ToString(quickSort(createRandomIntList(10)))))
+  test("100")(println(ToString(quickSort(createRandomIntList(100)))))
+}
+
+class MergeSortTest extends FunSuite {
+  test("10")(println(ToString(mergeSort(createRandomIntList(10)))))
+  test("100")(println(ToString(mergeSort(createRandomIntList(100)))))
+}
+
 class ListPerformace extends FunSuite {
   def executionTime(f: List => List, input: List): Long
   = {
@@ -54,12 +64,19 @@ class ListPerformace extends FunSuite {
     {
       val list1: List = createRandomIntList(1000)
       val list2: List = copy(list1)
-      val QsTime: Long = executionTime(bubbleSort, list1)
-      val BsTime: Long = executionTime(quickSort, list2)
-      val proportion: Long = QsTime / BsTime;
+      val list3: List = copy(list1)
+      val BsTime: Long = executionTime(bubbleSort, list1)
+      val QsTime: Long = executionTime(quickSort, list2)
+      val MsTime: Long = executionTime(mergeSort, list3)
+      val proportionQS_BS: Float = QsTime.toFloat / BsTime.toFloat
+      val proportionQS_MS: Float = QsTime.toFloat / MsTime.toFloat
+      val proportionMS_BS: Float = MsTime.toFloat / BsTime.toFloat
       println("BubbleSort(1000) = " + QsTime)
       println("Quicksort(1000) = " + BsTime)
-      println("Relative speed of Qs to Bs = " + proportion)
+      println("MergeSort(1000) = " + MsTime)
+      //println("Relative speed of Quicksort to BubbleSort = " + proportionQS_BS)
+      //println("Relative speed of Quicksort to MergeSort = " + proportionQS_MS)
+      //println("Relative speed of MergeSort to BubbleSort = " + proportionMS_BS)
     }
   )
 }

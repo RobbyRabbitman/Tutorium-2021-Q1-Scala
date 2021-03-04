@@ -109,4 +109,24 @@ package object List {
       }
     }
   }
+
+
+  def merge(sorted1: List, sorted2: List): List = (sorted1, sorted2) match {
+    case (s1: EmptyList, s2: List) => s2
+    case (s1: List, s2: EmptyList) => s1
+    case (s1: NonEmptyList, s2: NonEmptyList) =>
+      if (compare(s1.value, s2.value)) NonEmptyList(s1.value, merge(s1.rest, s2))
+      else NonEmptyList(s2.value, merge(s1, s2.rest))
+  }
+
+  def mergeSort(list: List): List = list match {
+    case list: EmptyList => list
+    case list: NonEmptyList => list.rest match {
+      case r: EmptyList => list
+      case r: NonEmptyList => {
+        val split: ListPair = splitAt(list, length(list) / 2)
+        merge(mergeSort(split.firstList), mergeSort(split.secondList))
+      }
+    }
+  }
 }
